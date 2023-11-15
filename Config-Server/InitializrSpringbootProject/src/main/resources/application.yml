@@ -1,12 +1,22 @@
 server:
   port: 8081
 spring:
+  profiles:
+    active: development  
   cloud:
     config:
       server:
         git:
+          username: jmvillafanamdoza
+          password: Jimhh1234#
           default-label: config-server
           uri: https://github.com/jmvillafanamdoza/Microservices-Vetpet
-          search-paths: config-data         
-  application:
-    name: config-service
+          search-paths: config-data                         
+    application:
+        name: config-service
+    datasource:
+        url: jdbc:mysql://localhost:3306/CustomerDatabase?createDatabaseIfNotExist=true
+        username: root
+        password: mysql
+        driver-class-name: com.mysql.cj.jdbc.Driver
+ 

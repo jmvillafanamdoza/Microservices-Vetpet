@@ -1,6 +1,9 @@
 spring:
   application:
     name: ApiCustomer
+    profiles: default 
+    label: null 
+    includeOrigin: true
   cloud:
     config:
       enabled: true
