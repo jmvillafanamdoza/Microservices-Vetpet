@@ -15,7 +15,7 @@ spring:
           uri: https://github.com/jmvillafanamdoza/Microservices-Vetpet
           search-paths: config-data                         
     application:
-        name: config-service
+        name: ApiConfigServer
     datasource:
         url: jdbc:mysql://localhost:3306/CustomerDatabase?createDatabaseIfNotExist=true
         username: root
