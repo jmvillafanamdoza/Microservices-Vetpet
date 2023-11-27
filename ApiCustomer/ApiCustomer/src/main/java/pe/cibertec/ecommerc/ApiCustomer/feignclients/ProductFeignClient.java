@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pe.cibertec.ecommerc.ApiCustomer.model.Product;
 
-@FeignClient(name = "servicios-products", url = "http://localhost:8082")
+@FeignClient(name = "ApiProductv2", url = "http://localhost:8002")
 //@RequestMapping("api/v1/product")
 public interface ProductFeignClient {
     

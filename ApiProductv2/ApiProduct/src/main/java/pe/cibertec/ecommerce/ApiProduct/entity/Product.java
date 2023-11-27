@@ -13,8 +13,9 @@ import lombok.Data;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String productName;
     private BigDecimal unitPrice;
     private int userId;
+    private int employeeId;
 }

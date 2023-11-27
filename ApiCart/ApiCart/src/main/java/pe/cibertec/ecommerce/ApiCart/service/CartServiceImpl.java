@@ -2,14 +2,12 @@
 package pe.cibertec.ecommerce.ApiCart.service;
 
 import jakarta.transaction.Transactional;
-import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.cibertec.ecommerce.ApiCart.dao.OrderRepository;
 import pe.cibertec.ecommerce.ApiCart.dto.Purchase;
 import pe.cibertec.ecommerce.ApiCart.dto.PurchaseResponse;
-import pe.cibertec.ecommerce.ApiCart.entity.Item;
 import pe.cibertec.ecommerce.ApiCart.entity.Order;
 
 @Service
@@ -35,5 +33,5 @@ public class CartServiceImpl implements CartService {
     private String getTrackingNumber(){
         return UUID.randomUUID().toString();
     }
-  
+    
 }

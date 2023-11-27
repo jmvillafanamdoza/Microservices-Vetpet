@@ -43,7 +43,7 @@ public class ProductController {
     }
     
     @GetMapping("/findById/{id}")
-    public ResponseEntity<Product> findById(@PathVariable Long id){
+    public ResponseEntity<Product> findById(@PathVariable int id){
         return new ResponseEntity<>(productService.findById(id),
                 HttpStatus.OK);
     }
@@ -61,7 +61,7 @@ public class ProductController {
     }
     
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable int id){
         productService.delete(id);
     }
     
@@ -70,6 +70,25 @@ public class ProductController {
         List<Product> products = productService.findByUserId(userId);
         return ResponseEntity.ok(products);
     }
+    
+    /*
+    @GetMapping("/api/v1/product/byuser/{userId}")
+    List<Product> getProducts(@PathVariable("userId") int userId);
+    
+    */
+    
+    @GetMapping("/byEmployee/{employeeId}")
+    public ResponseEntity<List<Product>> findByEmployeeId(@PathVariable("employeeId") int employeeId){
+        List<Product> products = productService.findByEmployeeId(employeeId);
+        return ResponseEntity.ok(products);
+    }
+    
+    /*
+     @GetMapping("/api/v1/product/byEmployee/{employeeId}")
+    List<Product> getProducts(@PathVariable("employeeId") int employeeId);
+    
+    */
+    
 
     @PostMapping()
     public ResponseEntity<Product> save (@RequestBody Product product){

@@ -34,7 +34,7 @@ public class CustomerController {
         return customerService.findById(id);
     }
     
-     @PostMapping("/save")
+    @PostMapping("/save")
     public ResponseEntity<Customer> save(@RequestBody Customer customer){
         Customer customerNew = customerService.save(customer);
         return ResponseEntity.ok(customerNew);

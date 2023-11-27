@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ApiCart",
+    "\\ApiCart\\src",
+    "\\ApiCart\\src\\main",
+    "\\ApiCart\\src\\main\\resources",
+    "\\ApiCart\\src\\main\\resources\\templates",
+    "\\ApiCart\\src\\test",
+    "\\ApiCart\\src\\test\\java",
+    "\\ApiCart\\src\\test\\java\\pe",
+    "\\ApiCart\\src\\test\\java\\pe\\cibertec",
+    "\\ApiCart\\src\\test\\java\\pe\\cibertec\\ecommerce",
+    "\\ApiCart\\src\\test\\java\\pe\\cibertec\\ecommerce\\ApiCart"
+  ],
+  "PreviewInSolutionExplorer": false
+}

@@ -21,13 +21,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(Long id) {
-        return productRepository
-          .findById(id)
-          .orElseThrow(()->
-          new EntityNotFoundException("Product not found with id "+id.toString()));
+    public Product findById(int id) {
+        return productRepository.findById(id).get();
     }
-
+      
     @Override
     public Product add(Product product) {
        return productRepository.save(product);
@@ -42,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(int id) {
         var productDB = productRepository.findById(id).get();
         productRepository.delete(productDB);
     }
@@ -75,6 +72,11 @@ public class ProductServiceImpl implements ProductService {
     public Product save(Product product) {
          Product productNew = productRepository.save(product);
         return productNew;  
+    }
+
+    @Override
+    public List<Product> findByEmployeeId(int employeeId) {
+        return productRepository.findByEmployeeId(employeeId);
     }
     
     

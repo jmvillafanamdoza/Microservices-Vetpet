@@ -8,12 +8,13 @@ import pe.cibertec.ecommerce.ApiProduct.entity.Product;
 public interface ProductService {
     public List<Product> findAll();
     public Page<Product> findAll(int page,int size);
-    public Product findById(Long id);
+    public Product findById(int id);
     public Product findByProductName(String productName);
     public Product add(Product product);
     public Product update(Product product);
-    public void delete(Long id);
+    public void delete(int id);
     public List<Product> findByUserId(int userId);
+    public List<Product> findByEmployeeId(int employeeId);
     public Product save (Product product);
     
     
