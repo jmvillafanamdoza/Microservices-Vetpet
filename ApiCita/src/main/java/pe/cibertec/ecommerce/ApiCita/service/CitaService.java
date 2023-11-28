@@ -8,6 +8,12 @@ import pe.cibertec.ecommerce.ApiCita.entity.Cita;
  * @author jmvil
  */
 public interface CitaService {
-    List<Cita> findAll();
-    Cita add(Cita cita);    
+    public List<Cita> findAll();
+    public Cita add(Cita cita); 
+   
+    
+    //OpenFeign  
+    public Cita save (Cita cita);
+    public List<Cita> findByCustomerId(int customerId);
+    
 }

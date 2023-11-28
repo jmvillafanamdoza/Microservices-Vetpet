@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.cibertec.ecommerce.ApiCita.dao.CitaRepository;
 import pe.cibertec.ecommerce.ApiCita.entity.Cita;
 import pe.cibertec.ecommerce.ApiCita.service.CitaService;
 
@@ -34,8 +33,23 @@ public class CitaController {
     }
     
     @PostMapping("add")
-    public ResponseEntity<Cita> add(@RequestBody Cita category){
-        return new ResponseEntity<>(citaService.add(category),
+    public ResponseEntity<Cita> add(@RequestBody Cita cita){
+        return new ResponseEntity<>(citaService.add(cita),
                 HttpStatus.CREATED);
     }
+    
+    //OpenFeign
+    
+    @GetMapping("/byCustomer/{customerId}")
+    public ResponseEntity<List<Cita>> getByCustomerId(@PathVariable("customerId") int customerId){
+        List<Cita> citas = citaService.findByCustomerId(customerId);
+        return ResponseEntity.ok(citas); 
+    } 
+    @PostMapping()
+    public ResponseEntity<Cita> save (@RequestBody Cita cita){
+        Cita citaNew = citaService.save(cita);
+        return ResponseEntity.ok(citaNew);
+    
+    }
+    
 }

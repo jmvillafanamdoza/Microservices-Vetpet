@@ -16,3 +16,16 @@ public interface MascotaService {
 
     
 }
+
+/*
+public interface EmployeeService {
+    public List<Employee> findAll();
+    public Employee findById(int employeeId);
+    public Employee addEmp(Employee employee);
+    public Employee updateEmp (Employee employee);
+    public void deleteEmp (int employeeId);
+    public Product saveProduct (int employeeId, Product product);
+    public Map<String, Object> getEmployeeAndProducts(int employeeId);
+}
+
+*/

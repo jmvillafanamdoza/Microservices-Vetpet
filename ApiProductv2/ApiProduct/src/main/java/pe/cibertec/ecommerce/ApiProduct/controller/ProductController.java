@@ -81,14 +81,7 @@ public class ProductController {
     public ResponseEntity<List<Product>> findByEmployeeId(@PathVariable("employeeId") int employeeId){
         List<Product> products = productService.findByEmployeeId(employeeId);
         return ResponseEntity.ok(products);
-    }
-    
-    /*
-     @GetMapping("/api/v1/product/byEmployee/{employeeId}")
-    List<Product> getProducts(@PathVariable("employeeId") int employeeId);
-    
-    */
-    
+    }  
 
     @PostMapping()
     public ResponseEntity<Product> save (@RequestBody Product product){
@@ -97,3 +90,9 @@ public class ProductController {
         
     }
 }
+
+/*
+  @PostMapping("/api/v1/product")
+    Product save (@RequestBody Product product);
+
+*/

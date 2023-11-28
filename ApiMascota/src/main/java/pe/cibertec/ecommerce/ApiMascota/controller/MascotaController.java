@@ -19,7 +19,7 @@ import pe.cibertec.ecommerce.ApiMascota.service.MascotaService;
 
 
 @RestController
-@RequestMapping(path = "api/v1/mascota")
+@RequestMapping("api/v1/mascota")
 public class MascotaController {
     
     @Autowired

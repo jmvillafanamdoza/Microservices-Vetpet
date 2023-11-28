@@ -17,5 +17,13 @@ public interface ProductService {
     public List<Product> findByEmployeeId(int employeeId);
     public Product save (Product product);
     
+    /*
+      @PostMapping("/api/v1/product")
+    Product save (@RequestBody Product product);
+    
+    @GetMapping("/api/v1/product/byuser/{userId}")
+    List<Product> getProducts(@PathVariable("userId") int userId);
+    */
+    
     
 }

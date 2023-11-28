@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pe.cibertec.ecommerc.ApiCustomer.dao.CustomerRepository;
 import pe.cibertec.ecommerc.ApiCustomer.entity.Customer;
+import pe.cibertec.ecommerc.ApiCustomer.model.Cita;
 import pe.cibertec.ecommerc.ApiCustomer.model.Product;
 import pe.cibertec.ecommerc.ApiCustomer.service.CustomerService;
 
@@ -51,7 +52,7 @@ public class CustomerController {
     
     
     //FeignClient
-   @PostMapping("/saveproduct/{userId}")
+   @PostMapping("/saveproductByCustomer/{userId}")
    public ResponseEntity<Product> saveProduct (@PathVariable("userId") int userId, @RequestBody Product product) {
        if(customerService.findById(userId)== null)
            return ResponseEntity.notFound().build();
@@ -62,6 +63,20 @@ public class CustomerController {
    @GetMapping("/getAll/{userId}")
    public ResponseEntity<Map<String,Object>> getAllProducts(@PathVariable("userId") int userId) {
        Map<String,Object> result = customerService.getUserAndProducts(userId);
+       return  ResponseEntity.ok(result);
+   }
+   
+   @PostMapping("/savecitabyCustomer/{customerId}")
+   public ResponseEntity<Cita> saveCita (@PathVariable("customerId") int customerId, @RequestBody Cita cita) {
+       if(customerService.findById(customerId)== null)
+           return ResponseEntity.notFound().build();
+       Cita citaNew = customerService.saveCita(customerId, cita);
+       return ResponseEntity.ok(cita); 
+   }
+   
+   @GetMapping("/getAll/{customerId}")
+   public ResponseEntity<Map<String,Object>> getAllCitas(@PathVariable("customerId") int customerId) {
+       Map<String,Object> result = customerService.getUserAndProducts(customerId);
        return  ResponseEntity.ok(result);
    }
   

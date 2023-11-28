@@ -15,9 +15,8 @@ import lombok.Data;
  *
  * @author jmvil
  */
-
-@Entity
 @Data
+@Entity
 public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +24,24 @@ public class Cita {
     private String descriptioncita;
     private String namemascota;
     private Date fechacita;
+    private int customerId;
     
     
 }
+/*
+
+@Data
+@Entity
+//@Table(name = "ddddddddd")
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    private String email;
+    private String phone;
+            
+}
+
+
+*/
