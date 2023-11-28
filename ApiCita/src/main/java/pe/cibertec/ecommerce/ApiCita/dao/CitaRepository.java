@@ -10,11 +10,14 @@ import org.springframework.stereotype.Repository;
 import pe.cibertec.ecommerce.ApiCita.entity.Cita;
 
 /**
- *
- * @author jmvil
+ @Repository
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+    
+}
  */
 @Repository
 public interface CitaRepository extends JpaRepository<Cita, Integer>{
         List<Cita> findByCustomerId(int customerId);
 
+    
 }

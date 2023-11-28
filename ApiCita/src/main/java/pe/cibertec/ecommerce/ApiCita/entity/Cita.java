@@ -11,37 +11,17 @@ import jakarta.persistence.Id;
 import java.util.Date;
 import lombok.Data;
 
-/**
- *
- * @author jmvil
- */
-@Data
+
 @Entity
+@Data
 public class Cita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int citaId;
     private String descriptioncita;
-    private String namemascota;
     private Date fechacita;
     private int customerId;
+
     
-    
+     
 }
-/*
-
-@Data
-@Entity
-//@Table(name = "ddddddddd")
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String email;
-    private String phone;
-            
-}
-
-
-*/

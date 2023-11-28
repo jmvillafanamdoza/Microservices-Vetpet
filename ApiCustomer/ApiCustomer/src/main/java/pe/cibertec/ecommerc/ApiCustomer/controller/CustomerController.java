@@ -60,7 +60,7 @@ public class CustomerController {
        return ResponseEntity.ok(product); 
    }
 
-   @GetMapping("/getAll/{userId}")
+   @GetMapping("/getAllUser/{userId}")
    public ResponseEntity<Map<String,Object>> getAllProducts(@PathVariable("userId") int userId) {
        Map<String,Object> result = customerService.getUserAndProducts(userId);
        return  ResponseEntity.ok(result);
@@ -74,7 +74,7 @@ public class CustomerController {
        return ResponseEntity.ok(cita); 
    }
    
-   @GetMapping("/getAll/{customerId}")
+   @GetMapping("/getAllCustomer/{customerId}")
    public ResponseEntity<Map<String,Object>> getAllCitas(@PathVariable("customerId") int customerId) {
        Map<String,Object> result = customerService.getUserAndProducts(customerId);
        return  ResponseEntity.ok(result);

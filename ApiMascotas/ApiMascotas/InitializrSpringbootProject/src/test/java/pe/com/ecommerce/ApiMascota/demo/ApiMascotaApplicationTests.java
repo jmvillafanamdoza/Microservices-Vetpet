@@ -1,10 +1,10 @@
-package pe.cibertec.ecommerc.ApiCita.ApiCita;
+package pe.com.ecommerce.ApiMascota.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiCitaApplicationTests {
+class ApiMascotaApplicationTests {
 
 	@Test
 	void contextLoads() {
