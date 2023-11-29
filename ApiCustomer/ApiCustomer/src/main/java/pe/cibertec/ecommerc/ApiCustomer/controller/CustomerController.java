@@ -51,7 +51,7 @@ public class CustomerController {
     */
     
     
-    //FeignClient
+    //FeignClient PRODUCTO / CREA UN PRODUCTO / LISTA LOS PRODUCTOS QUE CREA
    @PostMapping("/saveproductByCustomer/{userId}")
    public ResponseEntity<Product> saveProduct (@PathVariable("userId") int userId, @RequestBody Product product) {
        if(customerService.findById(userId)== null)
@@ -60,12 +60,14 @@ public class CustomerController {
        return ResponseEntity.ok(product); 
    }
 
-   @GetMapping("/getAllUser/{userId}")
+   @GetMapping("/getProductsByUser/{userId}")
    public ResponseEntity<Map<String,Object>> getAllProducts(@PathVariable("userId") int userId) {
        Map<String,Object> result = customerService.getUserAndProducts(userId);
        return  ResponseEntity.ok(result);
    }
    
+   //FeignClient CITA / CREA UNA CITA / LISTA LA CITA
+
    @PostMapping("/savecitabyCustomer/{customerId}")
    public ResponseEntity<Cita> saveCita (@PathVariable("customerId") int customerId, @RequestBody Cita cita) {
        if(customerService.findById(customerId)== null)
@@ -74,9 +76,9 @@ public class CustomerController {
        return ResponseEntity.ok(cita); 
    }
    
-   @GetMapping("/getAllCustomer/{customerId}")
+   @GetMapping("/getAllCitabyCustomer/{customerId}")
    public ResponseEntity<Map<String,Object>> getAllCitas(@PathVariable("customerId") int customerId) {
-       Map<String,Object> result = customerService.getUserAndProducts(customerId);
+       Map<String,Object> result = customerService.getCustomerAndCitas(customerId);
        return  ResponseEntity.ok(result);
    }
   

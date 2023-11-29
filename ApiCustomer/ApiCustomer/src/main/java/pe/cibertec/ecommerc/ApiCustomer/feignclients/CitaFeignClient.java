@@ -22,7 +22,24 @@ public interface CitaFeignClient {
     @PostMapping("/api/v1/cita")
     Cita save(@RequestBody Cita cita); 
            
-    @GetMapping("/api/v1/cita/byCustomer/{customerId")
+    @GetMapping("/api/v1/cita/byCustomer/{customerId}")
     List<Cita> getCitas(@PathVariable("customerId") int customerId);
     
 }
+
+/*
+@FeignClient(name = "ApiProductv2", url = "http://localhost:8002")
+//@RequestMapping("api/v1/product")
+public interface ProductFeignClient {
+    
+    @PostMapping("/api/v1/product")
+    Product save (@RequestBody Product product);
+    
+        
+    @GetMapping("/api/v1/product/byuser/{userId}")
+    List<Product> getProducts(@PathVariable("userId") int userId);
+    
+}
+
+
+*/

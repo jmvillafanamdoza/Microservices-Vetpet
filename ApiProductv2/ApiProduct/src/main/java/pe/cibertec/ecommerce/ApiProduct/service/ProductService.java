@@ -3,6 +3,7 @@ package pe.cibertec.ecommerce.ApiProduct.service;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import pe.cibertec.ecommerce.ApiProduct.entity.Product;
+import pe.cibertec.ecommerce.ApiProduct.entity.ProductOrder;
 
 
 public interface ProductService {
@@ -16,6 +17,8 @@ public interface ProductService {
     public List<Product> findByUserId(int userId);
     public List<Product> findByEmployeeId(int employeeId);
     public Product save (Product product);
+    public ProductOrder saveOrder (ProductOrder productOrder);
+
     
     /*
       @PostMapping("/api/v1/product")

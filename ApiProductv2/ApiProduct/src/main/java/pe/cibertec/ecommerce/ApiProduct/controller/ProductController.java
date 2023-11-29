@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pe.cibertec.ecommerce.ApiProduct.entity.Product;
+import pe.cibertec.ecommerce.ApiProduct.entity.ProductOrder;
 import pe.cibertec.ecommerce.ApiProduct.service.ProductService;
 
 @RestController
@@ -65,6 +66,8 @@ public class ProductController {
         productService.delete(id);
     }
     
+    
+    // OPENFEIGN CONTROLS
     @GetMapping("/byuser/{userId}")
     public ResponseEntity<List<Product>> getByUserId(@PathVariable("userId") int userId){
         List<Product> products = productService.findByUserId(userId);
@@ -89,10 +92,11 @@ public class ProductController {
         return ResponseEntity.ok(productNew);
         
     }
+    @PostMapping("/saveOrder")
+    public ResponseEntity<ProductOrder> saveOrder (@RequestBody ProductOrder productOrder){
+        ProductOrder productNew = productService.saveOrder(productOrder);
+        return ResponseEntity.ok(productNew);
+        
+    }
 }
 
-/*
-  @PostMapping("/api/v1/product")
-    Product save (@RequestBody Product product);
-
-*/

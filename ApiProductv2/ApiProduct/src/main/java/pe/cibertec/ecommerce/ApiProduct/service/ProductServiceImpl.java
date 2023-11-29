@@ -6,14 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import pe.cibertec.ecommerce.ApiProduct.dao.ProductOrderRepository;
 import pe.cibertec.ecommerce.ApiProduct.dao.ProductRepository;
     import pe.cibertec.ecommerce.ApiProduct.entity.Product;
+import pe.cibertec.ecommerce.ApiProduct.entity.ProductOrder;
 import pe.cibertec.ecommerce.ApiProduct.exception.EntityNotFoundException;
 
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private ProductOrderRepository productOrderRepository;
     
     @Override
     public List<Product> findAll() {
@@ -77,6 +81,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> findByEmployeeId(int employeeId) {
         return productRepository.findByEmployeeId(employeeId);
+    }
+
+    @Override
+    public ProductOrder saveOrder(ProductOrder productOrder) {
+        ProductOrder orderPNew = productOrderRepository.save(productOrder);
+        return orderPNew;
     }
     
     

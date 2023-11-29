@@ -17,27 +17,7 @@ import pe.cibertec.ecommerce.ApiCita.entity.Cita;
 import pe.cibertec.ecommerce.ApiCita.service.CitaService;
 
 /**
- @RestController
-@RequestMapping("/api/v1/customer")
-public class CustomerController {
-    @Autowired
-    private CustomerService customerService;
- 
-    @GetMapping("/findAll")
-    public List<Customer> findAll(){
-        return customerService.findAll();
-    }
-    
-    @GetMapping("/findById/{id}")
-    public Customer findById(@PathVariable int id){
-        return customerService.findById(id);
-    }
-    
-    @PostMapping("/save")
-    public ResponseEntity<Customer> save(@RequestBody Customer customer){
-        Customer customerNew = customerService.save(customer);
-        return ResponseEntity.ok(customerNew);
-    }
+
  */
 @RestController
 @RequestMapping("/api/v1/cita")
@@ -67,8 +47,8 @@ public class CitaController {
     
      @GetMapping("/byCustomer/{customerId}")
     public ResponseEntity<List<Cita>> findByCustomerId(@PathVariable("customerId") int customerId){
-        List<Cita> products = citaService.findByCustomerId(customerId);
-        return ResponseEntity.ok(products);
+        List<Cita> cita = citaService.findByCustomerId(customerId);
+        return ResponseEntity.ok(cita);
     }  
 
     @PostMapping()

@@ -49,21 +49,12 @@ public class CitaServiceImpl implements CitaService{
         Cita citaNew = citaRepository.save(cita);
        return citaNew;
     }
-    
-    
+       
     //OpenFeign Customer con cita
     @Override
     public List<Cita> findByCustomerId(int customerId) {
         return citaRepository.findByCustomerId(customerId);
     }
-    
-    /*
-    @Override
-    public List<Product> findByEmployeeId(int employeeId) {
-        return productRepository.findByEmployeeId(employeeId);
-    }
-    
-    */
 
     @Override
     public Cita addCita(Cita cita) {
@@ -71,16 +62,5 @@ public class CitaServiceImpl implements CitaService{
           return citaNew;  
 
     }
-    
-    /*
-     @Override
-    public Product save(Product product) {
-         Product productNew = productRepository.save(product);
-        return productNew;  
-    }
-
-    
-    
-    */
     
 }
