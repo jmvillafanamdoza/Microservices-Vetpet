@@ -1,0 +1,6 @@
+pe\cibertec\ecommerce\ApiHistoria\ApiHistoriaApplication.class
+pe\cibertec\ecommerce\ApiHistoria\service\HistoriaServiceImpl.class
+pe\cibertec\ecommerce\ApiHistoria\controller\HistoriaController.class
+pe\cibertec\ecommerce\ApiHistoria\entity\Historia.class
+pe\cibertec\ecommerce\ApiHistoria\dao\HistoriaRepository.class
+pe\cibertec\ecommerce\ApiHistoria\service\IHistoriaService.class
