@@ -44,8 +44,7 @@ public class ProductController {
     
     @GetMapping("/findById/{id}")
     public ResponseEntity<Product> findById(@PathVariable int id){
-        return new ResponseEntity<>(productService.findById(id),
-                HttpStatus.OK);
+        return new ResponseEntity<>(productService.findById(id),HttpStatus.OK);
     }
     
     @PostMapping("/add")
@@ -65,24 +64,22 @@ public class ProductController {
         productService.delete(id);
     }
     
+    
+    // FEIGN CLIENT LISTAR PRODUCTOS POR ID CUSTOMER
     @GetMapping("/byuser/{userId}")
     public ResponseEntity<List<Product>> getByUserId(@PathVariable("userId") int userId){
         List<Product> products = productService.findByUserId(userId);
         return ResponseEntity.ok(products);
     }
     
-    /*
-    @GetMapping("/api/v1/product/byuser/{userId}")
-    List<Product> getProducts(@PathVariable("userId") int userId);
-    
-    */
-    
+    //LISTAR PRODUCTOS POR ID EMPLEADO
     @GetMapping("/byEmployee/{employeeId}")
     public ResponseEntity<List<Product>> findByEmployeeId(@PathVariable("employeeId") int employeeId){
         List<Product> products = productService.findByEmployeeId(employeeId);
         return ResponseEntity.ok(products);
     }  
-
+    
+    //GUARDAR PRODUCTOS PARA LAS APIS
     @PostMapping()
     public ResponseEntity<Product> save (@RequestBody Product product){
         Product productNew = productService.save(product);
@@ -90,9 +87,3 @@ public class ProductController {
         
     }
 }
-
-/*
-  @PostMapping("/api/v1/product")
-    Product save (@RequestBody Product product);
-
-*/

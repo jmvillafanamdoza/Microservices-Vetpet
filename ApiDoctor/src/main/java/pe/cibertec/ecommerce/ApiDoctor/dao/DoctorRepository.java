@@ -8,7 +8,6 @@ import pe.cibertec.ecommerce.ApiDoctor.entity.Doctor;
 
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Integer>{
-    
 }
 
 

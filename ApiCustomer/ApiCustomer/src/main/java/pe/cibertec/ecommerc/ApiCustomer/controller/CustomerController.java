@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.cibertec.ecommerc.ApiCustomer.dao.CustomerRepository;
 import pe.cibertec.ecommerc.ApiCustomer.entity.Customer;
 import pe.cibertec.ecommerc.ApiCustomer.model.Cita;
+import pe.cibertec.ecommerc.ApiCustomer.model.Mascota;
 import pe.cibertec.ecommerc.ApiCustomer.model.Product;
 import pe.cibertec.ecommerc.ApiCustomer.service.CustomerService;
 
@@ -21,10 +21,7 @@ import pe.cibertec.ecommerc.ApiCustomer.service.CustomerService;
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
-    
-    @Autowired
-    private CustomerRepository customerRepository;
-    
+   
     @GetMapping("/findAll")
     public List<Customer> findAll(){
         return customerService.findAll();
@@ -40,18 +37,10 @@ public class CustomerController {
         Customer customerNew = customerService.save(customer);
         return ResponseEntity.ok(customerNew);
     }
-            
-         
-    /*
-    @PostMapping()
-    public ResponseEntity<User> save(@RequestBody User user) {
-        User userNew = userService.save(user);
-        return ResponseEntity.ok(userNew);
-    }
-    */
-    
-    
+        
     //FeignClient
+    
+    //GUARDAR PRODUCTOS BY CUSTOMER
    @PostMapping("/saveproductByCustomer/{userId}")
    public ResponseEntity<Product> saveProduct (@PathVariable("userId") int userId, @RequestBody Product product) {
        if(customerService.findById(userId)== null)
@@ -59,13 +48,15 @@ public class CustomerController {
        Product productNew = customerService.saveProduct(userId, product);
        return ResponseEntity.ok(product); 
    }
-
+   
+   //LISTAR PRODUCTOS BY CUSTOMER
    @GetMapping("/getAllUser/{userId}")
    public ResponseEntity<Map<String,Object>> getAllProducts(@PathVariable("userId") int userId) {
        Map<String,Object> result = customerService.getUserAndProducts(userId);
        return  ResponseEntity.ok(result);
    }
    
+   //GUARDAR CITAS BY CUSTOMER
    @PostMapping("/savecitabyCustomer/{customerId}")
    public ResponseEntity<Cita> saveCita (@PathVariable("customerId") int customerId, @RequestBody Cita cita) {
        if(customerService.findById(customerId)== null)
@@ -74,9 +65,26 @@ public class CustomerController {
        return ResponseEntity.ok(cita); 
    }
    
+   //LISTAR CITAS BY CUSTOMER  
    @GetMapping("/getAllCustomer/{customerId}")
    public ResponseEntity<Map<String,Object>> getAllCitas(@PathVariable("customerId") int customerId) {
        Map<String,Object> result = customerService.getUserAndProducts(customerId);
+       return  ResponseEntity.ok(result);
+   }
+   
+   //GUARDAR MASCOTAS BY CUSTOMER
+   @PostMapping("/saveMascotabyCustomer/{customermId}")
+   public ResponseEntity<Mascota> saveMascota (@PathVariable("customermId") int customermId, @RequestBody Mascota mascota) {
+       if(customerService.findById(customermId)== null)
+           return ResponseEntity.notFound().build();
+       Mascota mascotaNew = customerService.saveMascota(customermId, mascota);
+       return ResponseEntity.ok(mascota); 
+   }
+   
+   //LISTAR MASCOTAS BY CUSTOMER  
+   @GetMapping("/getAllMascotasbyCustomer/{customermId}")
+   public ResponseEntity<Map<String,Object>> getAllMascotas(@PathVariable("customermId") int customermId) {
+       Map<String,Object> result = customerService.getCustomerAndMascotas(customermId);
        return  ResponseEntity.ok(result);
    }
   

@@ -8,15 +8,14 @@
 		<version>3.2.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pe.cibertec.ecommerce.ApiCita</groupId>
-	<artifactId>ApiCita</artifactId>
+	<groupId>pe.cibertec.ecommerce.ApiHistoria</groupId>
+	<artifactId>ApiHistoria</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ApiCita</name>
-	<description>ApiCita project for Spring Boot</description>
+	<name>ApiHistoria</name>
+	<description>ApiHistoria</description>
 	<properties>
 		<java.version>17</java.version>
-                <spring-cloud.version>2023.0.0-RC1</spring-cloud.version>
-
+                 <spring-cloud.version>2023.0.0-RC1</spring-cloud.version>
 
 	</properties>
 	<dependencies>
@@ -55,7 +54,7 @@
                <artifactId>spring-cloud-starter-bootstrap</artifactId>
                    <version>4.0.4</version>
 </dependency>
- <dependency>
+<dependency>
              <groupId>org.springframework.cloud</groupId>
                <artifactId>spring-cloud-starter-openfeign</artifactId>
                    <version>4.0.4</version>
@@ -64,17 +63,16 @@
                         <groupId>net.logstash.logback</groupId>
                         <artifactId>logstash-logback-encoder</artifactId>
                             <version>7.2</version>
-</dependency> 
+</dependency>
 <dependency>
                         <groupId>org.springframework.cloud</groupId>
                         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
                         <version>4.0.0</version>                       
 </dependency>
-
-
+                
 	</dependencies>
         
-        <dependencyManagement>
+         <dependencyManagement>
             <dependencies>
                  <dependency>
                      <groupId>org.springframework.cloud</groupId>
@@ -112,6 +110,6 @@
                      <enabled>false</enabled>
                  </snapshots>
                </repository>
-        </repositories>
+</repositories>
 
 </project>

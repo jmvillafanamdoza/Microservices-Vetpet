@@ -13,17 +13,14 @@ public interface ProductService {
     public Product add(Product product);
     public Product update(Product product);
     public void delete(int id);
+    
+    //FeignClient CUSTOMER lista productos
     public List<Product> findByUserId(int userId);
+    
+    //FeignClient EMPLOYEE lista productos
     public List<Product> findByEmployeeId(int employeeId);
+    
+    //FeignClient PRODUCT
     public Product save (Product product);
-    
-    /*
-      @PostMapping("/api/v1/product")
-    Product save (@RequestBody Product product);
-    
-    @GetMapping("/api/v1/product/byuser/{userId}")
-    List<Product> getProducts(@PathVariable("userId") int userId);
-    */
-    
-    
+       
 }

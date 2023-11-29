@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import pe.cibertec.ecommerc.ApiCustomer.dao.CustomerRepository;
 import pe.cibertec.ecommerc.ApiCustomer.entity.Customer;
 import pe.cibertec.ecommerc.ApiCustomer.feignclients.CitaFeignClient;
+import pe.cibertec.ecommerc.ApiCustomer.feignclients.MascotaFeignClient;
 import pe.cibertec.ecommerc.ApiCustomer.feignclients.ProductFeignClient;
 import pe.cibertec.ecommerc.ApiCustomer.model.Cita;
+import pe.cibertec.ecommerc.ApiCustomer.model.Mascota;
 import pe.cibertec.ecommerc.ApiCustomer.model.Product;
 
 @Service
@@ -21,6 +23,8 @@ public class CustomerServiceImpl implements CustomerService {
     private ProductFeignClient productFeignClient;
     @Autowired
     private CitaFeignClient citaFeignClient;
+    @Autowired
+    private MascotaFeignClient mascotaFeignClient;
     
     
 
@@ -95,9 +99,32 @@ public class CustomerServiceImpl implements CustomerService {
         return result;
     }
     
+    //OpenFeing Mascotas los comandos como .save son de MascotaFeignClient
+   
     
-    
-    
+    @Override
+    public Mascota saveMascota(int customermId, Mascota mascota) {
+        mascota.setCustomermId(customermId);
+        Mascota mascotaNew = mascotaFeignClient.saveMascota(mascota);
+        return mascotaNew;
+    }
 
+    @Override
+    public Map<String, Object> getCustomerAndMascotas(int customermId) {
+    Map<String, Object> result = new HashMap<>();
+        Customer customer = customerRepository.findById(customermId).orElse(null);
+        if (customer == null){
+            result.put("Mensaje", "no existe el Customer");
+            return result;
+        }
+        result.put("Customer",customer);
+        List<Mascota> mascotas = mascotaFeignClient.getMascotas(customermId);
+        if(mascotas.isEmpty())
+            result.put("Mascota", "ese Cliente no tiene mascotas");
+        else
+            result.put("Mascota", mascotas);
+        return result;    }
+
+   
 }
   

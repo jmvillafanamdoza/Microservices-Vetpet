@@ -4,11 +4,15 @@
  */
 package pe.cibertec.ecommerce.ApiDoctor.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.cibertec.ecommerce.ApiDoctor.dao.DoctorRepository;
 import pe.cibertec.ecommerce.ApiDoctor.entity.Doctor;
+import pe.cibertec.ecommerce.ApiDoctor.feignclients.HistoriaFeignClient;
+import pe.cibertec.ecommerce.ApiDoctor.model.Historia;
 
 /**
  *
@@ -19,6 +23,8 @@ public class DoctorServiceImpl implements DoctorService{
     
     @Autowired    
     private DoctorRepository doctorRepository;
+    @Autowired
+    private HistoriaFeignClient historiaFeignClient;
 
     @Override
     public List<Doctor> findAll() {
@@ -34,6 +40,15 @@ public class DoctorServiceImpl implements DoctorService{
     public Doctor findById(int doctorId) {
         return doctorRepository.findById(doctorId).get();
     }
+    /*
+    @Override
+    public Product findById(int id) {
+        return productRepository.findById(id).get();
+    }
+    
+    */
+
+
 
     @Override
     public void deleteDoctor(int doctorId) {
@@ -53,5 +68,31 @@ public class DoctorServiceImpl implements DoctorService{
         doctorBD.setDoctorPhone(doctor.getDoctorPhone());
         return doctorRepository.save(doctorBD);    
     }
-      
+    
+    //OpenFeing Historia 
+
+    
+    @Override
+    public Historia saveHistoria(int doctorhId, Historia historia) {
+        historia.setDoctorhId(doctorhId);
+        Historia historiaNew = historiaFeignClient.saveHistoria(historia);
+        return historiaNew;    
+    }
+
+    @Override
+    public Map<String, Object> getHistoriasbyDoctor(int doctorhId) {
+        Map<String, Object> result = new HashMap<>();
+        Doctor doctor = doctorRepository.findById(doctorhId).orElse(null);
+        if (doctor == null){
+            result.put("Mensaje", "no existe el Doctor");
+            return result;
+        }
+        result.put("Doctor",doctor);
+        List<Historia> historias = historiaFeignClient.getHistorias(doctorhId);
+        if(historias.isEmpty())
+            result.put("Historia", "ese Dostor no tiene Historias");
+        else
+            result.put("Historia", historias);
+        return result;  
+    }      
 }

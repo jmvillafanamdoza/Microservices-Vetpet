@@ -55,30 +55,27 @@ public class ProductServiceImpl implements ProductService {
     public Product findByProductName(String productName) {
         return productRepository.findByProductName(productName);
     }
-
+    
+    
+    //FEING CLIENT 
+    
+    //LISTAR PRODUCTOS POR CUSTOMER
     @Override
     public List<Product> findByUserId(int userId) {
         return productRepository.findByUserId(userId);
     }
     
-  
-    
-    /* public Bike save(Bike bike) {
-        Bike bikeNew = bikeRepository.save(bike);
-        return bikeNew;
-    }
-    */
+    //GUARDAR PRODUCTOS
     @Override
     public Product save(Product product) {
          Product productNew = productRepository.save(product);
         return productNew;  
     }
-
+    
+    //LISTAR PRODUCTOS POR EMPLOYEE
     @Override
     public List<Product> findByEmployeeId(int employeeId) {
         return productRepository.findByEmployeeId(employeeId);
     }
-    
-    
     
 }
