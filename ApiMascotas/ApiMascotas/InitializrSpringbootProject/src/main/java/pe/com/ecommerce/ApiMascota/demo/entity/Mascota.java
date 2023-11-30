@@ -19,4 +19,5 @@ public class Mascota {
     public String genero;
     public String especie;
     public String raza;
+    public int customermId;
 }

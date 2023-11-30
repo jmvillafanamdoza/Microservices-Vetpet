@@ -28,4 +28,28 @@ public class MascotaService implements IMascotaService{
         var petDelete = mascotaRepository.findById(Id).get();
         mascotaRepository.delete(petDelete);
     }
+    
+    //FeignClient 
+    /*
+      @Override
+    public Product save(Product product) {
+         Product productNew = productRepository.save(product);
+        return productNew;  
+    }
+
+    @Override
+    public List<Product> findByEmployeeId(int employeeId) {
+        return productRepository.findByEmployeeId(employeeId);
+    }
+    */
+    @Override
+    public Mascota saveMascota(Mascota mascota) {
+        Mascota mascotaNew = mascotaRepository.save(mascota);
+        return mascotaNew;
+    }
+
+    @Override
+    public List<Mascota> findByCustomermId(int customermId) {
+        return mascotaRepository.findByCustomermId(customermId);
+    }
 }

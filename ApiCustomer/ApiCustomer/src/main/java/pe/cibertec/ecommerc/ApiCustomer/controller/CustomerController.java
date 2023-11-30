@@ -51,8 +51,8 @@ public class CustomerController {
    
    //LISTAR PRODUCTOS BY CUSTOMER
    @GetMapping("/getAllUser/{userId}")
-   public ResponseEntity<Map<String,Object>> getAllProducts(@PathVariable("userId") int userId) {
-       Map<String,Object> result = customerService.getUserAndProducts(userId);
+   public ResponseEntity<Map<String,Object>> getAllCitas(@PathVariable("userId") int userId) {
+       Map<String,Object> result = customerService.getCustomerAndMascotas(userId);
        return  ResponseEntity.ok(result);
    }
    
@@ -67,8 +67,8 @@ public class CustomerController {
    
    //LISTAR CITAS BY CUSTOMER  
    @GetMapping("/getAllCustomer/{customerId}")
-   public ResponseEntity<Map<String,Object>> getAllCitas(@PathVariable("customerId") int customerId) {
-       Map<String,Object> result = customerService.getUserAndProducts(customerId);
+   public ResponseEntity<Map<String,Object>> getallCitas(@PathVariable("customerId") int customerId) {
+       Map<String,Object> result = customerService.getCustomerAndMascotas(customerId);
        return  ResponseEntity.ok(result);
    }
    
